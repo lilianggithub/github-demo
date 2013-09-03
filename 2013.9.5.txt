@@ -1,0 +1,42 @@
+git下常用的几个基本操作:
+
+github上创建立一个项目
+用户登录后系统，在github首页，点击页面右下角“New Repository”
+填写项目信息：
+project name: hibernate-demo  
+description : my first project
+点击“Create Repository” ； 现在完成了一个项目在github上的创建。
+
+
+创建密钥
+我们如何让本地git项目与远程的github建立联系呢？之里就用的密钥。通俗点叫口令吧！（天王盖地老，宝塔镇河妖。。）
+ 
+$ cd ~/. ssh 检查本机的ssh密钥
+如果提示：No such file or directory 说明你是第一次使用git。
+如果不是第一次使用，请执行下面的操作,清理原有ssh密钥。
+ $ mkdir key_backup
+ $ cp id_rsa* key_backup
+ $ rm id_rsa*
+生成新的密钥：
+Ssh-keygen –t rsa –C “defnngj@gmai.com” 
+
+
+打开本地C:\Documents and Settings\Administrator\.ssh\id_rsa.pub文件。此文件里面内容为刚才生成人密钥。
+登陆github系统。点击右上角的 Account Settings--->SSH Public keys ---> add another public keys
+把你本地生成的密钥复制到里面（key文本框中）， 点击 add key 就ok了
+在git中运行下面命令：
+ 
+$ git –T git@github.com
+如果提示：Hi defnngj You've successfully authenticated, but GitHub does not provide shell access. 说明你连接成功了。
+
+
+设置用户信息
+这一步不是很重要，貌似不设置也行，但github官方步骤中有，所以这里也提一下。
+在git中设置用户名，邮箱
+ 
+$ git config --global user.name "defnngj"//给自己起个用户名
+$ git config --global user.email  "defnngj@gmail.com"//填写自己的邮箱
+
+
+
+.......后续更新zhong...............
